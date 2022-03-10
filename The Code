@@ -1,0 +1,123 @@
+ticket_name = ["adult", "child", "senior", "family", "group"]
+price_one_day = [20, 12, 16, 60, 15]
+lion_feeding = 2.5
+penguin_feeding = 2
+evening_barbecue = 5
+days_in_safari = 0
+adults = 0
+kids = 0
+seniors = 0
+families = 0
+total_group = 0
+summa = 0
+check = 0
+unique_number = []
+visitor = 0
+unique_count = 0
+group_check = 0
+total_adults = 0
+total_kids = 0
+
+while visitor == 0:
+       adults = 0
+       kids = 0
+       seniors = 0
+       families = 0
+       for i in range(5):
+              print("Price for one day ", price_one_day[i], "for a/an ", ticket_name[i])
+
+       print ("Family ticket includes 2 adults (senior) and 3 children")
+       print ("Group ticket price applyes for groups of more than 6")
+
+       days_in_safari = int(input("How many days are you going to go for? 1 or 2:"))
+       
+       while check == 0:
+              if days_in_safari == 1:
+                     check = 1
+              if days_in_safari == 2:
+                     check = 1
+              else:
+                     print ("Who are you")
+                     days_in_safari = int(input("1 or 2"))
+       check = 0
+              
+       adults = int(input("How many adults are in a group?: "))
+       kids = int(input("How many children are in a group?: "))
+       seniors = int(input("How many senior people are in agroup?: "))
+       total_adults = adults + seniors
+       total_kids = total_adults * 2
+       if kids > total_kids:
+              print ("Sorry, you have too little adults. Call the manager.")
+              break
+       
+       total_group = adults + kids + seniors
+
+       if total_group >= 6:
+              group_check = 1
+       else:
+              group_check = 0
+              
+
+       while kids-3 > 0 and adults-2 > 0:
+              kids = kids-3
+              adults = adults-2
+              families = families+1
+       while kids-3 > 0 and adults-1 > 0 and seniors-1 > 0:
+              kids = kids-3
+              adults = adults-1
+              seniors = seniors-1
+              families = families+1
+       while kids-3 > 0 and seniors-2 > 0:
+              kids = kids-3
+              seniors = seniors-2
+              families = families+1
+       while kids-2 > 0 and adults-2 > 0:
+              kids = kids-2
+              adults = adults-2
+              families = families+1
+       while kids-2 > 0 and adults-1 > 0 and seniors-1 > 0:
+              kids = kids-2
+              adults = adults-1
+              seniors = seniors-1
+              families = families+1
+
+       print (families)
+       print (adults)
+       print (seniors)
+       print (kids)
+
+       summa = families * 60
+       if group_check == 1:
+              total_adults = adults + seniors
+              summa = summa + (total_adults * 15)
+              summa = summa + (kids * 12)
+       elif group_check == 0:
+              summa = summa + (adults * 20)
+              summa = summa + (seniors * 16)
+              summa = summa + (kids * 12)
+
+       if days_in_safari == 1:
+              summa = summa * 1
+       else:
+              summa = summa * 1.5
+
+       print ("Would you like add-ons?")
+       if days_in_safari == 1:
+              print ("If you want the additional program press 1, if not press 0")
+              lion_feeding = int(input("Would you like to purchase Lion Feeding for 2.5$"))
+              penguin_feeding = int(input("Would you like to purchase Penguine Feeding for 2$"))
+       else:
+              print ("If you want the additional program press 1, if not press 0")
+              lion_feeding = int(input("Would you like to purchase Lion Feeding for 2.5$"))
+              penguin_feeding = int(input("Would you like to purchase Penguine Feeding for 2$"))
+              evening_barbecue = int(input("Would you like to purchase Evening Barbecue for 5$"))
+
+       summa = summa + (lion_feeding * 2.5)
+       summa = summa + (penguin_feeding * 2)
+       summa = summa + (evening_barbecue * 5)
+       
+       print (summa, " $")
+       unique_count = unique_count + 1
+       unique_number.append(unique_count)
+       print ("your unique booking nuber is: ", unique_count)
+
